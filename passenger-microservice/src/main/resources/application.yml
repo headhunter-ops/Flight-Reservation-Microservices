@@ -1,0 +1,26 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: passenger-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/passenger-service
+    username: your-db-username
+    password: your-db-password
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+logging:
+  level:
+    feign: DEBUG

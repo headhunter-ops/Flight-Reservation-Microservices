@@ -1,0 +1,37 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: API-GATEWAY-TRAVEL-SERVICE
+
+  cloud:
+    gateway:
+      routes:
+        - id: FLIGHT-SERVICE
+          uri: lb://FLIGHT-SERVICE
+          predicates:
+            - Path=/flights/**
+
+
+        - id: PASSENGER-SERVICE
+          uri: lb://PASSENGER-SERVICE
+          predicates:
+            - Path=/passengers/**
+
+
+        - id: RESERVATION-SERVICE
+          uri: lb://RESERVATION-SERVICE
+          predicates:
+            - Path=/users/**
+
+
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
